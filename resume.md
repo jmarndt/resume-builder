@@ -30,9 +30,12 @@ Expert in working, good at things, and the mostest reliable employee evar!
 - Section!
 
 # Work Experience
-## Mega Corp
+## ID_MCORP_2(actual does not matter, just needs to be unique for each item that has an ID...)
 ### Title
 Lead Dude
+
+### Company
+Mega Corp
 
 ### Period
 January 2020 - Current
@@ -44,9 +47,12 @@ Did some really cool stuff. Lead a lot of lesser dudes. Made the company million
 - Totally not arrogant
 - Ultra mega big brain
 
-## Medium Corp
+## ID_MCORP_1
 ### Title
 Mediocre Dude
+
+### Company
+Medium Corp
 
 ### Period
 July 2010 - January 2020
@@ -58,9 +64,12 @@ Built up dudeness and increased from lesser dude to mediocre dude. Toiled and cr
 - Grew from lesser dude
 - Grew brain from little to big
 
-## Small Corp
+## ID_SCORP_1
 ### Title
 Lesser Dude
+
+### Company
+Small Corp
 
 ### Period
 December 2000 - July 2010
@@ -73,7 +82,10 @@ Just a wimpy lesser dude, got walked on, learned my place.
 - Did lesser work as a lesser dude
 
 # Education
-## Masters
+## ID_M_1
+### Degree
+Masters
+
 ### Field
 Dudology
 
@@ -83,7 +95,10 @@ The School of Dudes
 ### Completed
 May 2014
 
-## Bachelors
+## ID_B_1
+### Degree
+Bachelors
+
 ### Field
 Dudology
 

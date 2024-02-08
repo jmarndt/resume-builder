@@ -129,8 +129,8 @@ def parse_resume():
             ),
             professional_summary = data['Professional Summary'],
             skills = data['Skills'],
-            work_exp = [SimpleNamespace(company = comp, title = det['Title'], period = det['Period'], summary = det['Summary'], points = det['Points']) for comp, det in data['Work Experience'].items()],
-            education = [SimpleNamespace(degree = deg, field = det['Field'], school = det['School'], completed = det['Completed']) for deg, det in data['Education'].items()]
+            work_exp = [SimpleNamespace(company = det['Company'], title = det['Title'], period = det['Period'], summary = det['Summary'], points = det['Points']) for det in data['Work Experience'].values()],
+            education = [SimpleNamespace(degree = det['Degree'], field = det['Field'], school = det['School'], completed = det['Completed']) for det in data['Education'].values()]
         )
 
 
