@@ -117,15 +117,14 @@ def will_xp_page_break(pdf: FPDF, xp):
 
 def parse_resume():
     file_name = sys.argv[1] if len(sys.argv) > 1 else 'resume.md'
-    with open(file_name, 'r') as rusume:
-        data =  markdown_to_json.dictify(rusume.read())
+    with open(file_name, 'r') as resume:
+        data =  markdown_to_json.dictify(resume.read())
         return SimpleNamespace(
             personal_info = SimpleNamespace(
                 first_name = data['Personal Info']['First Name'],
                 last_name = data['Personal Info']['Last Name'],
                 email = data['Personal Info']['Email'],
-                phone_number = data['Personal Info']['Phone Number'],
-                address = data['Personal Info']['Address']
+                phone_number = data['Personal Info']['Phone Number']
             ),
             professional_summary = data['Professional Summary'],
             skills = data['Skills'],

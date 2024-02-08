@@ -11,9 +11,6 @@ john.dude@example.com
 ## Phone Number
 (555) 987-6543
 
-## Address
-1234 Northwest Rd, Sometown, CA 81810
-
 # Professional Summary
 Expert in working, good at things, and the mostest reliable employee evar!
 
