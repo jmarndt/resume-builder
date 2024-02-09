@@ -1,22 +1,22 @@
-# First Name
+# first_name
 John
 
-# Last Name
+# last_name
 Dude
 
-# Email
+# email
 john.dude@example.com
 
-# Phone Number
+# phone_number
 (555) 987-6543
 
-# Address
+# address
 Dude City, USA
 
-# Professional Summary
+# professional_summary
 Expert in working, good at things, and the mostest reliable employee evar!
 
-# Skills
+# skills
 - Many
 - Skills
 - Almost
@@ -28,81 +28,81 @@ Expert in working, good at things, and the mostest reliable employee evar!
 - This
 - Section!
 
-# Work Experience
+# work_experience
 ## ID_MCORP_2(actual does not matter, just needs to be unique for each item that has an ID...)
-### Title
+### title
 Lead Dude
 
-### Company
+### company
 Mega Corp
 
-### Period
+### period
 January 2020 - Current
 
-### Summary
+### summary
 Did some really cool stuff. Lead a lot of lesser dudes. Made the company millions of dollars!
 
-### Points
+### points
 - Totally not arrogant
 - Ultra mega big brain
 
 ## ID_MCORP_1
-### Title
+### title
 Mediocre Dude
 
-### Company
+### company
 Medium Corp
 
-### Period
+### period
 July 2010 - January 2020
 
-### Summary
+### summary
 Built up dudeness and increased from lesser dude to mediocre dude. Toiled and crap.
 
-### Points
+### points
 - Grew from lesser dude
 - Grew brain from little to big
 
 ## ID_SCORP_1
-### Title
+### title
 Lesser Dude
 
-### Company
+### company
 Small Corp
 
-### Period
+### period
 December 2000 - July 2010
 
-### Summary
+### summary
 Just a wimpy lesser dude, got walked on, learned my place.
 
-### Points
+### points
 - Helped big brains get their coffee
 - Did lesser work as a lesser dude
 
-# Education
+# education
 ## ID_M_1
-### Degree
+### degree
 Masters
 
-### Field
+### field
 Dudology
 
-### School
+### school
 The School of Dudes
 
-### Completed
+### completed
 May 2014
 
 ## ID_B_1
-### Degree
+### degree
 Bachelors
 
-### Field
+### field
 Dudology
 
-### School
+### school
 The School of Dudes
 
-### Completed
+### completed
 May 2009
