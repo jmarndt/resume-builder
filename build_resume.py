@@ -8,6 +8,7 @@ import markdown_to_json
 
 
 DocumentPrefs = SimpleNamespace(
+    skills_column_count = 3,
     font_family = 'Cabin',
     font_size_reg = 14,
     font_size_title = 24,
@@ -28,7 +29,7 @@ def create_pdf(resume):
     pdf.add_font(DocumentPrefs.font_family, style="b", fname=f'{DocumentPrefs.script_dir}/fonts/{DocumentPrefs.font_family}-Bold.ttf')
     pdf.add_font(DocumentPrefs.font_family, style="i", fname=f'{DocumentPrefs.script_dir}/fonts/{DocumentPrefs.font_family}-Italic.ttf')
     pdf.add_font(DocumentPrefs.font_family, style="bi", fname=f'{DocumentPrefs.script_dir}/fonts/{DocumentPrefs.font_family}-BoldItalic.ttf')
-    pdf.set_title(f'{resume.personal_info.first_name} {resume.personal_info.last_name} Résumé')
+    pdf.set_title(f'{resume.first_name} {resume.last_name} Résumé')
     pdf.set_margins(DocumentPrefs.margin_vertical, DocumentPrefs.margin_side)
     pdf.set_auto_page_break(True, DocumentPrefs.margin_vertical)
     pdf.add_page()
@@ -36,8 +37,8 @@ def create_pdf(resume):
 
 
 def create_header(pdf: FPDF, resume):
-    title = f'{resume.personal_info.first_name} {resume.personal_info.last_name}'
-    contact = f'{resume.personal_info.email}{DocumentPrefs.separator}{resume.personal_info.phone_number}'
+    title = f'{resume.first_name} {resume.last_name}'
+    contact = f'{resume.phone_number}{DocumentPrefs.separator}{resume.email}{DocumentPrefs.separator}{resume.address}'
     add_text_line(pdf, title.upper(), DocumentPrefs.font_size_title, bold=True)
     pdf.ln(5.0)
     add_text_line(pdf, contact, DocumentPrefs.font_size_reg)
@@ -51,11 +52,10 @@ def create_professional_summary(pdf: FPDF, resume):
 
 
 def create_skills(pdf: FPDF, resume):
-    skillsPerLine = 3
-    sectionWidth = (pdf.w - (DocumentPrefs.margin_side * 2)) / skillsPerLine
+    sectionWidth = (pdf.w - (DocumentPrefs.margin_side * 2)) / DocumentPrefs.skills_column_count
     add_section_title(pdf, 'SKILLS')
     for idx, skill in enumerate(resume.skills, start=0):
-        if idx + 1 == len(resume.skills) or (idx % skillsPerLine == skillsPerLine - 1) and idx + 1 != len(resume.skills):
+        if idx + 1 == len(resume.skills) or (idx % DocumentPrefs.skills_column_count == DocumentPrefs.skills_column_count - 1) and idx + 1 != len(resume.skills):
             add_text_line(pdf, f' • {skill}', DocumentPrefs.font_size_reg, width=sectionWidth)
         else:
             add_text_line(pdf, f' • {skill}', DocumentPrefs.font_size_reg, width=sectionWidth, br=False)
@@ -83,8 +83,9 @@ def create_education(pdf: FPDF, resume):
         pdf.set_font(DocumentPrefs.font_family, 'BI', DocumentPrefs.font_size_reg)
         add_text_line(pdf, ed.degree, bold=True, italic=True, width=pdf.get_string_width(ed.degree), br=False)
         add_text_line(pdf, f'{DocumentPrefs.separator}{ed.field}', width=pdf.get_string_width(ed.field+DocumentPrefs.separator), br=False)
-        add_text_line(pdf, f'{DocumentPrefs.separator}{ed.school}', width=pdf.get_string_width(ed.school+DocumentPrefs.separator), br=False)
         add_text_line(pdf, ed.completed, bold=True, align='R')
+        add_text_line(pdf, f'{ed.school}', width=pdf.get_string_width(ed.school+DocumentPrefs.separator))
+        pdf.ln()
 
 
 def add_section_title(pdf: FPDF, text: str):
@@ -120,16 +121,15 @@ def parse_resume():
     with open(file_name, 'r') as resume:
         data =  markdown_to_json.dictify(resume.read())
         return SimpleNamespace(
-            personal_info = SimpleNamespace(
-                first_name = data['Personal Info']['First Name'],
-                last_name = data['Personal Info']['Last Name'],
-                email = data['Personal Info']['Email'],
-                phone_number = data['Personal Info']['Phone Number']
-            ),
+            first_name = data['First Name'],
+            last_name = data['Last Name'],
+            email = data['Email'],
+            phone_number = data['Phone Number'],
+            address = data['Address'],
             professional_summary = data['Professional Summary'],
             skills = data['Skills'],
-            work_exp = [SimpleNamespace(company = det['Company'], title = det['Title'], period = det['Period'], summary = det['Summary'], points = det['Points']) for det in data['Work Experience'].values()],
-            education = [SimpleNamespace(degree = det['Degree'], field = det['Field'], school = det['School'], completed = det['Completed']) for det in data['Education'].values()]
+            work_exp = [SimpleNamespace(company = detail['Company'], title = detail['Title'], period = detail['Period'], summary = detail['Summary'], points = detail['Points']) for detail in data['Work Experience'].values()],
+            education = [SimpleNamespace(degree = detail['Degree'], field = detail['Field'], school = detail['School'], completed = detail['Completed']) for detail in data['Education'].values()]
         )
 
 
@@ -141,4 +141,4 @@ if __name__ == '__main__':
     create_skills(pdf, resume)
     create_experience(pdf, resume)
     create_education(pdf, resume)
-    pdf.output(f'{DocumentPrefs.script_dir}/{resume.personal_info.last_name.lower()}_{resume.personal_info.first_name.lower()}_résumé.pdf')
+    pdf.output(f'{DocumentPrefs.script_dir}/{resume.last_name.lower()}_{resume.first_name.lower()}_résumé.pdf')

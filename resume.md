@@ -1,15 +1,17 @@
-# Personal Info
-## First Name
+# First Name
 John
 
-## Last Name
+# Last Name
 Dude
 
-## Email
+# Email
 john.dude@example.com
 
-## Phone Number
+# Phone Number
 (555) 987-6543
+
+# Address
+Dude City, USA
 
 # Professional Summary
 Expert in working, good at things, and the mostest reliable employee evar!
