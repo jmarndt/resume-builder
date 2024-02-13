@@ -4,7 +4,7 @@ from document import create_pdf, save_pdf, parse_data, add_text_line, add_paragr
 
 def create_header(pdf: FPDF, resume: Context):
     title = f'{resume.first_name} {resume.last_name}'
-    contact = f'{resume.phone_number}{DocumentPrefs.separator}{resume.email}{DocumentPrefs.separator}{resume.address}'
+    contact = f'{resume.address}{DocumentPrefs.separator}{resume.phone_number}{DocumentPrefs.separator}{resume.email}{DocumentPrefs.separator}{resume.linked_in}'
     add_text_line(pdf, title.upper(), DocumentPrefs.font_size_title, bold=True)
     pdf.ln(5.0)
     add_text_line(pdf, contact, DocumentPrefs.font_size_reg)
@@ -50,7 +50,7 @@ def create_education(pdf: FPDF, resume: ContextData):
         add_text_line(pdf, ed.degree, bold=True, italic=True, width=pdf.get_string_width(ed.degree), br=False)
         add_text_line(pdf, f'{DocumentPrefs.separator}{ed.field}', width=pdf.get_string_width(ed.field+DocumentPrefs.separator), br=False)
         add_text_line(pdf, ed.completed, bold=True, align='R')
-        add_text_line(pdf, f'{ed.school}', width=pdf.get_string_width(ed.school+DocumentPrefs.separator))
+        add_text_line(pdf, ed.school, width=pdf.get_string_width(ed.school+DocumentPrefs.separator))
         pdf.ln()
 
 

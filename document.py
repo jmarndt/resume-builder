@@ -68,6 +68,7 @@ class ContextData():
     email: str
     phone_number: str
     address: str
+    linked_in: str
     professional_summary: str
     skills: List[str]
     work_experience: List[WorkExperience]

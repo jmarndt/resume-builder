@@ -13,6 +13,9 @@ john.dude@example.com
 # address
 Dude City, USA
 
+# linked_in
+linkedin.com/in/jdude
+
 # professional_summary
 Expert in working, good at things, and the mostest reliable employee evar!
 
