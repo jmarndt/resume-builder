@@ -4,7 +4,7 @@ from document import create_pdf, save_pdf, parse_data, add_text_line, add_paragr
 
 def create_header(pdf: FPDF, cover: ContextData):
     title = f'{cover.first_name} {cover.last_name}'
-    contact = f'{cover.phone_number}{DocumentPrefs.separator}{cover.email}{DocumentPrefs.separator}{cover.address}'
+    contact = f'{cover.address}{DocumentPrefs.separator}{cover.phone_number}{DocumentPrefs.separator}{cover.email}{DocumentPrefs.separator}{cover.linked_in}'
     add_text_line(pdf, title.upper(), DocumentPrefs.font_size_reg, bold=True)
     pdf.ln(5.0)
     add_text_line(pdf, contact, DocumentPrefs.font_size_reg)

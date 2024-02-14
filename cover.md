@@ -13,6 +13,9 @@ john.dude@example.com
 # address
 Dude City, USA
 
+# linked_in
+linkedin.com/in/jdude
+
 # greeting
 To the <HIRING MANAGER>,
 
