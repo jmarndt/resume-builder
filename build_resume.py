@@ -18,13 +18,10 @@ def create_professional_summary(pdf: FPDF, resume: Context):
 
 
 def create_skills(pdf: FPDF, resume: Context):
-    sectionWidth = (pdf.w - (DocumentPrefs.margin_side * 2)) / DocumentPrefs.skills_per_line
     add_section_title(pdf, 'SKILLS')
-    for idx, skill in enumerate(resume.skills, start=0):
-        if idx + 1 == len(resume.skills) or (idx % DocumentPrefs.skills_per_line == DocumentPrefs.skills_per_line - 1) and idx + 1 != len(resume.skills):
-            add_text_line(pdf, f' • {skill}', DocumentPrefs.font_size_reg, width=sectionWidth)
-        else:
-            add_text_line(pdf, f' • {skill}', DocumentPrefs.font_size_reg, width=sectionWidth, br=False)
+    section_width = (pdf.w - (DocumentPrefs.margin_side * 2)) / DocumentPrefs.skills_per_line
+    for idx, skill in enumerate(resume.skills, start=1):
+        add_text_line(pdf, f' • {skill}', DocumentPrefs.font_size_reg, width=section_width, br=(idx % DocumentPrefs.skills_per_line == 0))
     pdf.ln(DocumentPrefs.margin_section)
 
 
