@@ -39,7 +39,8 @@ def create_experience(pdf: FPDF, resume: ContextData):
         add_paragraph(pdf, xp.summary)
         for point in xp.points:
             add_text_line(pdf, f'{DocumentPrefs.separator}{point}')
-        pdf.ln(DocumentPrefs.font_size_reg)
+        if not xp is resume.work_experience[-1]:
+            pdf.ln(DocumentPrefs.font_size_reg)
     pdf.ln(DocumentPrefs.margin_section)
 
 
